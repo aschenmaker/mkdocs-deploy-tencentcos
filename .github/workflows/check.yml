@@ -1,4 +1,4 @@
-name: check for shell
+name: Deploy
 
 on: [push]
 
