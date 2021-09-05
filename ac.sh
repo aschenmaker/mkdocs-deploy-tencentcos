@@ -1,3 +1,5 @@
+#!/bin/bash
+
 set -e
 
 function print_info() {
@@ -17,7 +19,7 @@ if [ -f "${REQUIREMENTS}" ]; then
     pip install -r "${REQUIREMENTS}"
 fi
 
-mkdocs build  --config-file "${CONFIG_FILE}" --force
+mkdocs build  --config-file "${CONFIG_FILE}"
 
 UPLOAD_ARGS = "delete -r -f / && upload -r ./site/ /"
 
