@@ -43,20 +43,10 @@ if [ -z "$REGION" ]; then
   exit 1
 fi
 
+coscmd config -a "$SECRET_ID" -s "$SECRET_KEY" -b "$BUCKET" -r "$REGION" -m 30
 
-coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION -m 30
+print_info "Running command: coscmd ${UPLOAD_ARGS}"
+coscmd "$UPLOAD_ARGS"
 
-IFS="&&"
-arrARGS=($UPLOAD_ARGS)
-
-for each in ${arrARGS[@]}
-do
-  unset IFS
-  each=$(echo ${each} | xargs)
-  if [ -n "$each" ]; then
-  print_info "Running command: coscmd ${each}"
-  coscmd $each
-  fi
-done
 
 print_info "Commands ran successfully"
