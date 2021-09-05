@@ -1,0 +1,9 @@
+name: 'Deploy Mkdocs To Tencent COS'
+description: 'Automatic Deploy your mkdocs site to tencent cos, for faster accessing in China network'
+author: 'costa, <aschen@cug.edu.cn>'
+branding:
+  icon: 'cloud'
+  color: 'red'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
