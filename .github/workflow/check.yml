@@ -1,0 +1,15 @@
+name: check for shell
+
+on: [push]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2.3.4
+
+      - name: Shellcheck
+        run: |
+          shellcheck *.sh
