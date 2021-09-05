@@ -21,7 +21,7 @@ fi
 
 mkdocs build  --config-file "${CONFIG_FILE}"
 
-UPLOAD_ARGS = "delete -r -f / && upload -r ./site/ /"
+UPLOAD_ARGS="delete -r -f / && upload -r ./site/ /"
 
 if [ -z "$INPUT_SECRET_ID" ]; then
   print_info '::error::Required SecretId parameter'
