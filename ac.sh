@@ -21,7 +21,7 @@ fi
 
 mkdocs build  --config-file "${CONFIG_FILE}"
 
-UPLOAD_ARGS="delete -r -f / && upload -r ${GITHUB_WORKSPACE}/site/ /"
+UPLOAD_ARGS="upload -r ${GITHUB_WORKSPACE}/site/ /"
 
 if [ -z "$SECRET_ID" ]; then
   print_info '::error::Required SecretId parameter'
