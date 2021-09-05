@@ -21,8 +21,6 @@ fi
 
 mkdocs build  --config-file "${CONFIG_FILE}"
 
-UPLOAD_ARGS="upload -r ${GITHUB_WORKSPACE}/site/ /"
-
 if [ -z "$SECRET_ID" ]; then
   print_info '::error::Required SecretId parameter'
   exit 1
@@ -45,8 +43,8 @@ fi
 
 coscmd config -a "$SECRET_ID" -s "$SECRET_KEY" -b "$BUCKET" -r "$REGION" -m 30
 
-print_info "Running command: coscmd ${UPLOAD_ARGS}"
-coscmd "$UPLOAD_ARGS"
+print_info "Running command: coscmd upload -r ${GITHUB_WORKSPACE}/site/ /"
+coscmd upload -r "${GITHUB_WORKSPACE}"/site/ /
 
 
 print_info "Commands ran successfully"
