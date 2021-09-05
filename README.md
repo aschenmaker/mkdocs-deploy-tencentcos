@@ -1,5 +1,5 @@
 # GitHub Action to deploy MkDocs site to Tencent Cos
-![GitHub Badge](https://aschenmaker/mkdocs-deploy-tencentcos/workflows/Build/badge.svg)
+![GitHub Badge](https://github.com/aschenmaker/mkdocs-deploy-tencentcos/actions/workflows/check.yml/badge.svg)
 
 部署Mkdocs到腾讯云COS静态网站
 ## Intro
