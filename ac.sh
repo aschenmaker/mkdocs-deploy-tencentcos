@@ -7,9 +7,9 @@ function print_info() {
 }
 
 
-if [ -n "${INPUT_CONFIG_FILE}" ]; then
+if [ -n "${CONFIG_FILE}" ]; then
     print_info "Setting custom path for mkdocs config yml"
-    export CONFIG_FILE="${GITHUB_WORKSPACE}/${INPUT_CONFIG_FILE}"
+    export CONFIG_FILE="${GITHUB_WORKSPACE}/${CONFIG_FILE}"
 else
     export CONFIG_FILE="${GITHUB_WORKSPACE}/mkdocs.yml"
 fi
@@ -23,28 +23,28 @@ mkdocs build  --config-file "${CONFIG_FILE}"
 
 UPLOAD_ARGS="delete -r -f / && upload -r ./site/ /"
 
-if [ -z "$INPUT_SECRET_ID" ]; then
+if [ -z "$SECRET_ID" ]; then
   print_info '::error::Required SecretId parameter'
   exit 1
 fi
 
-if [ -z "$INPUT_SECRET_KEY" ]; then
+if [ -z "$SECRET_KEY" ]; then
   print_info '::error::Required SecretKey parameter'
   exit 1
 fi
 
-if [ -z "$INPUT_BUCKET" ]; then
+if [ -z "$BUCKET" ]; then
   print_info '::error::Required Bucket parameter'
   exit 1
 fi
 
-if [ -z "$INPUT_REGION" ]; then
+if [ -z "$REGION" ]; then
   print_info '::error::Required Region parameter'
   exit 1
 fi
 
 
-coscmd config -a $INPUT_SECRET_ID -s $INPUT_SECRET_KEY -b $INPUT_BUCKET -r $INPUT_REGION -m 30
+coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION -m 30
 
 IFS="&&"
 arrARGS=($UPLOAD_ARGS)
